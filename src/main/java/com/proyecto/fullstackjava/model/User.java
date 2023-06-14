@@ -1,12 +1,24 @@
 package com.proyecto.fullstackjava.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="users")
 public class User {
 
+    @Column(name="id")
     private int id;
+    @Column(name="nombre")
     private String nombre;
+    @Column(name="apellido")
     private String apellido;
+    @Column(name="correo")
     private String correo;
+    @Column(name="password")
     private String password;
+    @Column(name="celular")
     private long celular;
 
     public int getId() {
