@@ -8,4 +8,7 @@ public interface IUser{
 
     List<User> listarTodosUsuarios();
 
+    void borrarUsuario(int id);
+
+    void registrarUsuario(User user);
 }

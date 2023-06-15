@@ -20,4 +20,15 @@ public class UserDaoImpl implements IUser{
     public List<User> listarTodosUsuarios() {
         return entityManager.createQuery("from User").getResultList();
     }
+
+    @Override
+    public void borrarUsuario(int id) {
+        User user=entityManager.find(User.class,id);
+        entityManager.remove(user);
+    }
+
+    @Override
+    public void registrarUsuario(User user) {
+        entityManager.persist(user);
+    }
 }

@@ -2,12 +2,14 @@ package com.proyecto.fullstackjava.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="users")
 public class User {
 
+    @Id
     @Column(name="id")
     private int id;
     @Column(name="nombre")
@@ -19,7 +21,7 @@ public class User {
     @Column(name="password")
     private String password;
     @Column(name="celular")
-    private long celular;
+    private String celular;
 
     public int getId() {
         return id;
@@ -61,11 +63,11 @@ public class User {
         this.password = password;
     }
 
-    public long getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(long celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 }
