@@ -11,4 +11,8 @@ public interface IUser{
     void borrarUsuario(int id);
 
     void registrarUsuario(User user);
+
+    void actualizarUsuario(User user, int id);
+
+    boolean verificarEmailPassword(User user);
 }
