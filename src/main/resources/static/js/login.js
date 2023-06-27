@@ -20,8 +20,10 @@ async function iniciarSesion(){
       });
       const response = await request.text();
 
-      if(response=='Correcto'){
-            window.location.href = 'tables.html';
+      if(response!='Error en inicio de sesion'){
+      localStorage.token=response;
+      localStorage.correo=datosUsuarioLogin.correo;
+            window.location.href = 'users.html';
       } else{
             alert("Credenciales equivocadas, intente nuevamente");
       }

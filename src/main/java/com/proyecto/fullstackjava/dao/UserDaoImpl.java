@@ -42,17 +42,22 @@ public class UserDaoImpl implements IUser{
     }
 
     @Override
-    public boolean verificarEmailPassword(User user) {
+    public User verificarEmailPassword(User user) {
         List<User> listaUsuario= entityManager.createQuery("from User WHERE correo=:correo").setParameter("correo",user.getCorreo()).getResultList();
         Argon2 argon2= Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
 
         if(listaUsuario.isEmpty()){
-            return false;
+            return null;
         }
         String hashPasswordGuardada=listaUsuario.get(0).getPassword();
 
 
-        return argon2.verify(hashPasswordGuardada,user.getPassword());
+        if(argon2.verify(hashPasswordGuardada,user.getPassword())){
+            return listaUsuario.get(0);
+        }
+        else{
+            return null;
+        }
 
     }
 

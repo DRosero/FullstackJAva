@@ -2,17 +2,18 @@
 $(document).ready(function() {
     cargarUsuarios();
   $('#users').DataTable();
+  actualizarCorreoUsuarioLogeado();
 });
 
+function actualizarCorreoUsuarioLogeado(){
+    document.getElementById("txtMailUsuarioLogeado").outerHTML=localStorage.correo;
+}
 
 async function cargarUsuarios(){
 
       const request = await fetch('/users', {
         method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
+        headers: getHeaders()
       });
       const users = await request.json();
 
@@ -37,10 +38,15 @@ async function eliminarUsuario(id){
     }
     const request = await fetch('/users/'+id, {
             method: 'DELETE',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            }
+            headers: getHeaders()
           });
     location.reload();
+}
+
+function getHeaders(){
+            return {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': localStorage.token
+            };
 }

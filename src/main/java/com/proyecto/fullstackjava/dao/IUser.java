@@ -14,5 +14,5 @@ public interface IUser{
 
     void actualizarUsuario(User user, int id);
 
-    boolean verificarEmailPassword(User user);
+    User verificarEmailPassword(User user);
 }
